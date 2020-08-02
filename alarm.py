@@ -1,12 +1,15 @@
 # Jaxon Terrell
 # 7/31/20
-# Plays a sound and prints a message at a set time
+# Allows user to set an alarm that plays a sound and prints a message at set time
 
 from playsound import playsound
+import sched
 import time
 
 
-def alarm(alarm_time, sound, message):
-    if time.time() == alarm_time:
-        playsound(sound)
-        print(message)
+def set_alarm(alarm_time, sound_file, message):
+    s = sched.scheduler(time.time, time.sleep)
+    s.enterabs(alarm_time, 1, print, argument=(message,))
+    s.enterabs(alarm_time, 1, playsound, argument=(sound_file,))
+    print("Alarm has been set for ", time.asctime(time.localtime(alarm_time)))
+    s.run()
