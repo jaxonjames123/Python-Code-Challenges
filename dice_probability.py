@@ -2,6 +2,8 @@
 # 8/3/20
 # Program to simulate rolling dice 1,000,000 times to find out the
 # probability of a certain outcome when rolling the dice (Monte Carlo Method)
+# sample function call: probability(6, 6, 4, 20)
+# each number represents the number of sides on each die
 from random import randint
 from collections import Counter
 
